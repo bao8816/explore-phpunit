@@ -5,8 +5,8 @@ namespace exp\src\test_double;
 
 class GameShop
 {
-    private $selled_games;
-    private $sale_number;
+    private array $selled_games;
+    private int $sale_number;
 
     public function __construct()
     {
@@ -14,7 +14,8 @@ class GameShop
         $this->sale_number = 0;
     }
 
-    public function sellGame( string $game_name, $write_log = true ) {
+    public function sellGame( string $game_name, $write_log = true ): int
+    {
         // do something
         // ...
 
@@ -26,13 +27,15 @@ class GameShop
         return ++$this->sale_number;
     }
 
-    public function logTransaction( string $game_name ) {
+    public function logTransaction( string $game_name ): void
+    {
         $this->selled_games[] = $game_name;
 
         // OR this function can call to an external service
     }
 
-    public function getSaleNumber() {
+    public function getSaleNumber(): int
+    {
         return $this->sale_number;
     }
 }

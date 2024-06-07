@@ -17,7 +17,8 @@ class LicenseWithPrivateMethods
         return "Sorry $name, you need a higher score.";
     }
 
-    private function buildLicenseCard(string $name) {
+    private function buildLicenseCard(string $name): string
+    {
         return "$name has a valid license.";
     }
 

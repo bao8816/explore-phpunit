@@ -9,8 +9,8 @@ require_once ('Constant.php');
 
 class GameStore
 {
-    private $sale_season;
-    private $studio_service;
+    private int $sale_season;
+    private GameStudioService $studio_service;
 
     /**
      * GameStore constructor.
@@ -27,13 +27,15 @@ class GameStore
      * @return array
      * @throws ErrorException
      */
-    public function getSaleList(int $season = 0) {
+    public function getSaleList(int $season = 0): array
+    {
         if ($this->sale_season !== $season) {
             throw new ErrorException("FAKE ERROR: NOT IN SALE");
         }
 
         $this->studio_service->updateStudioList();
 
+        //TODO: refactor updateStudioList() to the below code reachable
         return $this->studio_service->getSaleGames($season);
     }
 }

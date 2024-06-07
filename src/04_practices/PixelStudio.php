@@ -7,14 +7,15 @@ require_once ('Constant.php');
 
 class PixelStudio
 {
-    private $sale_season;
+    private int $sale_season;
 
     public function __construct()
     {
         $this->sale_season = SPRING_SEASON;
     }
 
-    public function getSaleGames(int $season) {
+    public function getSaleGames(int $season): array
+    {
         if ($this->sale_season != $season) {
             return [];
         }
@@ -25,7 +26,8 @@ class PixelStudio
         ];
     }
 
-    public function getStudioName() {
+    public function getStudioName(): bool|string
+    {
         $classname_with_namespace = explode('\\', get_class($this));
         return end($classname_with_namespace);
     }

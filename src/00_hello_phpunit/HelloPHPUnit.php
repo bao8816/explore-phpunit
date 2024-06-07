@@ -8,7 +8,8 @@ class HelloPHPUnit {
     {
     }
 
-    public function sayHello(string $name = '') {
+    public function sayHello(string $name = ''): string
+    {
         $_name = 'world';
         if( strlen($name) > 0){
             $_name = $name;

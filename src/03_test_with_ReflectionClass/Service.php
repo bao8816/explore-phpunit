@@ -5,9 +5,10 @@ namespace exp\src\TestReflectionClass;
 
 class LicenseService
 {
-    private static $instance;
+    private static LicenseService $instance;
 
-    public static function getInstance() {
+    public static function getInstance(): LicenseService
+    {
         if (!self::$instance) {
             self::$instance = new self();
         }
@@ -15,7 +16,8 @@ class LicenseService
         return self::$instance;
     }
 
-    public function isOpenForApplyingLicense( $date ) {
+    public function isOpenForApplyingLicense( $date ): bool
+    {
         /**
          * This function can be used in case:
          *   - On weekdays: The office is open, so this function return true
@@ -30,7 +32,8 @@ class LicenseService
         return true;
     }
 
-    private function isWeekend($date) {
+    private function isWeekend($date): bool
+    {
         return (date('N', strtotime($date)) >= 6);
     }
 }

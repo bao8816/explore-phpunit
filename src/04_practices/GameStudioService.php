@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace exp\src\practice;
 
+use ErrorException;
+
 class GameStudioService
 {
-    protected $studio_list;
+    protected array $studio_list;
 
     public function __construct()
     {
@@ -14,7 +16,7 @@ class GameStudioService
         $this->studio_list[] = new MonicaStudio();
     }
 
-    public function getSaleGames(int $season)
+    public function getSaleGames(int $season): array
     {
         $sale_games = [];
 
@@ -25,7 +27,10 @@ class GameStudioService
         return $sale_games;
     }
 
-    public function notifyNewCampaign()
+    /**
+     * @throws ErrorException
+     */
+    public function notifyNewCampaign(): void
     {
         $this->updateStudioList();
 
@@ -33,6 +38,9 @@ class GameStudioService
         //...
     }
 
+    /**
+     * @throws ErrorException
+     */
     public function updateStudioList()
     {
         /*
@@ -42,6 +50,6 @@ class GameStudioService
          * $this->studio_list = $new_studio_list
          */
 
-        throw new \ErrorException('FAKE ERROR: Update Studio List');
+        throw new ErrorException('FAKE ERROR: Update Studio List');
     }
 }

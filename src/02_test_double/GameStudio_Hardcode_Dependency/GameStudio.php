@@ -9,15 +9,14 @@ class GameStudio
     {
     }
 
-    public function produceNewGame() {
+    public function produceNewGame(): array
+    {
         $dev = new DeveloperService();
         $designer = new DesignerService();
 
-        $game = [
+        return [
             'code' => $dev->devTheGame(),
             'design' => $designer->designTheGame()
         ];
-
-        return $game;
     }
 }

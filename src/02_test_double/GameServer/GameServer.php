@@ -5,18 +5,20 @@ namespace exp\src\test_double;
 
 class GameServer
 {
-    private $services;
+    private array $services;
 
     public function __construct()
     {
         $this->services = [];
     }
 
-    public function addService( $service ) {
+    public function addService( $service ): void
+    {
         $this->services[] = $service;
     }
 
-    public function getGameList() {
+    public function getGameList(): array
+    {
         $games = [];
         foreach( $this->services as $service ) {
             $games = array_merge($games, $service->getGameList());
@@ -25,7 +27,8 @@ class GameServer
         return $games;
     }
 
-    public function clearAllServices() {
+    public function clearAllServices(): void
+    {
         $this->services = [];
     }
 }

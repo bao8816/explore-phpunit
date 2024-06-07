@@ -9,26 +9,20 @@ define('REGION_EUROPE', 3);
 
 class TaxCalculator
 {
-    private $tax_rate;
+    private float $tax_rate;
 
     public function __construct(int $region)
     {
-        switch ($region) {
-            case REGION_ASIA:
-                $this->tax_rate = 0.1;
-                break;
-            case REGION_AMERICA:
-                $this->tax_rate = 0.2;
-                break;
-            case REGION_EUROPE:
-                $this->tax_rate = 0.3;
-                break;
-            default:
-                $this->tax_rate = 0.4;
-        }
+        $this->tax_rate = match ($region) {
+            REGION_ASIA => 0.1,
+            REGION_AMERICA => 0.2,
+            REGION_EUROPE => 0.3,
+            default => 0.4,
+        };
     }
 
-    public function taxCalculate( $price ) {
+    public function taxCalculate( $price ): float|int
+    {
         return $this->tax_rate * $price;
     }
 }

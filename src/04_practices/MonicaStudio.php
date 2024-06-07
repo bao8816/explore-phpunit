@@ -7,14 +7,15 @@ require_once ('Constant.php');
 
 class MonicaStudio
 {
-    private $sale_season;
+    private int $sale_season;
 
     public function __construct()
     {
         $this->sale_season = WINTER_SEASON;
     }
 
-    public function getSaleGames(int $season) {
+    public function getSaleGames(int $season): array
+    {
         if ($this->sale_season != $season) {
             return [];
         }
@@ -25,7 +26,8 @@ class MonicaStudio
         ];
     }
 
-    public function getStudioName() {
+    public function getStudioName(): string
+    {
         return 'Santa Monica Studio';
     }
 }
